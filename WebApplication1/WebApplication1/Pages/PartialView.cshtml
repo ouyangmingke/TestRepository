@@ -1,0 +1,10 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<h1>部分视图</h1>
+<h3>ViewData: @ViewData["IsNumberReadOnly"]</h3>
+<h3>Model:  @Model.Name</h3>
+@foreach (var todo in @Model.TodoItems)
+{
+    <li id="@todo.Name">@todo.Name</li>
+}

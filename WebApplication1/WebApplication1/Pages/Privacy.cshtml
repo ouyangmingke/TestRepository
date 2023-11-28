@@ -1,0 +1,30 @@
+﻿@page
+@using ViewComponentSample.Models;
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+<p id="A">Use this page to detail your site's privacy policy.</p>
+<p id="A2">Use this page to detail your site's privacy policy.</p>
+<p id="A3">Use this page to detail your site's privacy policy.</p>
+<h1>------------------</h1>
+@*默认为GET请求*@
+<form>
+    <input type="text" asp-for="SearchString" />
+    <input type="submit" value="修改SearchString" class="btn btn-danger" />
+</form>
+<lable>@Model.SearchString</lable>
+
+<h1>------------------</h1>
+<form method="post">
+    <input type="text" name="code" />
+    <input type="submit" value="修改TodoItems" class="btn btn-danger" />
+</form>
+@foreach (var item in Model.TodoItems)
+{
+    <label id=" @Html.DisplayFor(modelItem =>item.Name)"> @Html.DisplayFor(modelItem => item.Name)</label>
+}
+
+<style>
+</style>
