@@ -1,4 +1,6 @@
 using WebApplication1.Extensions;
+using WebApplication1.SystemLogs.ColorConsoleLogs;
+using WebApplication1.SystemLogs.CustomLogs;
 
 var builder = WebApplication.CreateBuilder(args);
 // 添加的一组默认的日志记录提供程序：
@@ -6,9 +8,20 @@ builder.Host.ConfigureLogging(logging =>
 {
     // 清除现有的提供程序
     logging.ClearProviders();
-    // 使用自定义日志提供程序
+    // 添加自定义日志提供程序
     logging.AddCustomLogger();
+    logging.AddColorConsoleLogger();
+    // 添加自定义控制台日志格式化工具
+    logging.AddCustomFormatter(configur => configur.CustomPrefix = "CustomFormatter ============》");
+    logging.AddCustomWrappingConsoleFormatter(configur => configur.CustomPrefix = "CustomWrappingConsoleFormatter ============》");
 });
+//builder.Logging.AddColorConsoleLogger(configuration =>
+//{
+//    // Replace warning value from appsettings.json of "Cyan"
+//    configuration.LogLevelToColorMap[LogLevel.Warning] = ConsoleColor.DarkCyan;
+//    // Replace warning value from appsettings.json of "Red"
+//    configuration.LogLevelToColorMap[LogLevel.Error] = ConsoleColor.DarkRed;
+//});
 // 筛选器函数
 builder.Logging.AddFilter((provider, category, logLevel) =>
 {
