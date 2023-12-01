@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
 
-namespace WebApplication1.SystemLogs.Formatters
+namespace WebApplication1.SystemLogs.Formatters.ConsoleFormatters
 {
     /// <summary>
     /// 自定义包装控制台格式化程序选项

@@ -1,6 +1,6 @@
+using Microsoft.DotNet.Scaffolding.Shared;
 using WebApplication1.Extensions;
-using WebApplication1.SystemLogs.ColorConsoleLogs;
-using WebApplication1.SystemLogs.CustomLogs;
+using WebApplication1.SystemLogs;
 
 var builder = WebApplication.CreateBuilder(args);
 // 添加的一组默认的日志记录提供程序：
@@ -9,11 +9,12 @@ builder.Host.ConfigureLogging(logging =>
     // 清除现有的提供程序
     logging.ClearProviders();
     // 添加自定义日志提供程序
-    logging.AddCustomLogger();
-    logging.AddColorConsoleLogger();
+    //logging.AddCustomLogger();
+    logging.AddConsole();
+    //logging.AddColorConsoleLogger();
     // 添加自定义控制台日志格式化工具
     logging.AddCustomFormatter(configur => configur.CustomPrefix = "CustomFormatter ============》");
-    logging.AddCustomWrappingConsoleFormatter(configur => configur.CustomPrefix = "CustomWrappingConsoleFormatter ============》");
+    //logging.AddCustomWrappingConsoleFormatter(configur => configur.CustomPrefix = "CustomWrappingConsoleFormatter ============》");
 });
 //builder.Logging.AddColorConsoleLogger(configuration =>
 //{

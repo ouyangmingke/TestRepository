@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
 
-namespace WebApplication1.SystemLogs.Formatters
+namespace WebApplication1.SystemLogs.Formatters.ConsoleFormatters
 {
     /// <summary>
     /// 自定义颜色配置
@@ -25,11 +25,11 @@ namespace WebApplication1.SystemLogs.Formatters
         private bool ConsoleColorFormattingEnabled =>
             _formatterOptions.ColorBehavior == LoggerColorBehavior.Enabled ||
             _formatterOptions.ColorBehavior == LoggerColorBehavior.Default &&
-            System.Console.IsOutputRedirected == false;
+            Console.IsOutputRedirected == false;
 
         public CustomColorFormatter(IOptionsMonitor<CustomColorOptions> options)
             // Case insensitive
-            : base("customName") =>
+            : base(nameof(CustomColorFormatter)) =>
             (_optionsReloadToken, _formatterOptions) =
                 (options.OnChange(ReloadLoggerOptions), options.CurrentValue);
 

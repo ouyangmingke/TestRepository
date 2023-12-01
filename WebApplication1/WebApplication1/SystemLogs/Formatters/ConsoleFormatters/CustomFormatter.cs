@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
 
-namespace WebApplication1.SystemLogs.Formatters
+namespace WebApplication1.SystemLogs.Formatters.ConsoleFormatters
 {
     public class CustomOptions : ConsoleFormatterOptions
     {
@@ -20,7 +20,7 @@ namespace WebApplication1.SystemLogs.Formatters
 
         public CustomFormatter(IOptionsMonitor<CustomOptions> options)
             // Case insensitive
-            : base("customName") =>
+            : base(nameof(CustomFormatter)) =>
             (_optionsReloadToken, _formatterOptions) =
                 (options.OnChange(ReloadLoggerOptions), options.CurrentValue);
 
