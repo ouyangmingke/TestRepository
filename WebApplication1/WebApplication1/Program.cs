@@ -9,7 +9,7 @@ builder.Host.ConfigureLogging(logging =>
     // 清除现有的提供程序
     logging.ClearProviders();
     // 添加自定义日志提供程序
-    //logging.AddCustomLogger();
+    logging.AddCustomLogger();
     logging.AddConsole();
     //logging.AddColorConsoleLogger();
     // 添加自定义控制台日志格式化工具
